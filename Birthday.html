@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>For my love 🤍</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#08070d;color:#fff;font-family:Georgia,serif}
+.page{min-height:100vh;display:none;align-items:center;justify-content:center;text-align:center;padding:24px;position:relative;overflow:hidden}
+.page.active{display:flex}
+.card{width:min(650px,100%);padding:30px 24px;border-radius:28px;background:#ffffff12;backdrop-filter:blur(10px);box-shadow:0 15px 60px #0008}
+h1{font-size:clamp(34px,9vw,58px);margin:12px 0 18px}
+h2{font-size:clamp(26px,7vw,42px);margin:12px 0 20px}
+p{font-size:18px;line-height:1.8;color:#f8edf3}
+button{border:0;border-radius:30px;padding:15px 25px;font-size:16px;font-weight:bold;background:#fff;color:#241822;margin-top:16px}
+.stars{position:absolute;inset:0;opacity:.3;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:55px 55px}
+.balloon{position:absolute;width:54px;height:70px;border-radius:50%;background:#d9a7b9}
+.balloon:after{content:"";position:absolute;width:1px;height:100px;background:#ddd;left:27px;top:67px}
+.b1{left:8%;top:18%}.b2{right:9%;top:25%}.b3{left:15%;bottom:13%}.b4{right:16%;bottom:12%}
+.cake{font-size:100px}.letter{text-align:left;min-height:250px;padding:22px;border-radius:20px;background:#ffffff0d}
+.letter p{margin:0 0 16px}.heart{font-size:70px}
+.final{font-size:clamp(35px,9vw,64px);font-weight:bold}
+.confetti{position:absolute;inset:0;opacity:.45;background-image:radial-gradient(circle,#fff 2px,transparent 3px),radial-gradient(circle,#e8b8ca 2px,transparent 3px);background-size:80px 100px,110px 130px}
+</style>
+</head>
+<body>
+
+<section class="page active" id="p1">
+<div class="stars"></div>
+<div class="card">
+<div class="heart">🤍</div>
+<h1>The room is dark.</h1>
+<p>But there's a little surprise waiting for you...</p>
+<button onclick="go(2)">Turn on the lights ✨</button>
+</div>
+</section>
+
+<section class="page" id="p2">
+<div class="stars"></div>
+<div class="balloon b1"></div><div class="balloon b2"></div>
+<div class="balloon b3"></div><div class="balloon b4"></div>
+<div class="card">
+<h2>Much better. 🥹</h2>
+<p>Now let's make this place feel a little more like a birthday.</p>
+<button onclick="go(3)">Decorate the room 🎀</button>
+</div>
+</section>
+
+<section class="page" id="p3">
+<div class="stars"></div>
+<div class="card">
+<p>For you, my love</p>
+<div class="cake">🎂</div>
+<h2>Make a wish. 🤍</h2>
+<p>Close your eyes for a second... and make your birthday wish.</p>
+<button onclick="go(4)">I made my wish ✨</button>
+</div>
+</section>
+
+<section class="page" id="p4">
+<div class="stars"></div>
+<div class="card">
+<h2>For you, my love 🤍</h2>
+<div class="letter" id="letter"></div>
+<button onclick="go(5)">One last thing… 🥹</button>
+</div>
+</section>
+
+<section class="page" id="p5">
+<div class="stars"></div>
+<div class="confetti"></div>
+<div class="card">
+<div class="heart">❤️</div>
+<div class="final">happy birthday,<br>my love</div>
+<p>May Allah fill your life with happiness, barakah, peace and everything your heart quietly asks for.</p>
+<p>Same moon, different skies — but always the same two hearts. 🌙🤍</p>
+<p>Until the distance is only a memory, keep this little surprise as a reminder that someone in Pakistan is smiling because you exist. 🥹🇵🇰🇬🇧</p>
+<p>— your Mano 🤍</p>
+</div>
+</section>
+
+<script>
+function go(n){
+document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+document.getElementById('p'+n).classList.add('active');
+if(n===4)type();
+}
+
+const lines=[
+"my love,",
+"Happy birthday to the person who somehow became such a beautiful part of my life. 🤍",
+"I hope this new year of your life brings you closer to every dream you make dua for. I hope Allah keeps you safe, gives you endless reasons to smile, and puts barakah in every step you take.",
+"Distance may put countries between us, but it can never make the little things feel far — the msgs, the memories, the silly moments, the quiet smiles, and all the things that only we understand.",
+"So today, I just want you to know: you are deeply loved, remembered, and prayed for. 🥹❤️",
+"Happy birthday, jaan. 🤍"
+];
+
+function type(){
+const e=document.getElementById('letter');
+if(e.dataset.done)return;
+e.dataset.done=1;
+let i=0;
+function add(){
+if(i>=lines.length)return;
+const p=document.createElement('p');
+e.appendChild(p);
+const s=lines[i++];
+let j=0;
+(function w(){
+if(j<s.length){
+p.textContent+=s[j++];
+setTimeout(w,20);
+}else{
+setTimeout(add,90);
+}
+})();
+}
+add();
+}
+</script>
+</body>
+  </html>
